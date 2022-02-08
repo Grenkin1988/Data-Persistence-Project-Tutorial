@@ -24,7 +24,7 @@ public class HighScoreManager : MonoBehaviour
 
     public void UpdateIfHighScore(int highScore)
     {
-        if(highScore >= CurrentHighScore.score)
+        if(CurrentHighScore is null || highScore >= CurrentHighScore.score)
         {
             CurrentHighScore = new HighScore { score = highScore, name = CurrentUser };
         }
@@ -54,6 +54,11 @@ public class HighScoreManager : MonoBehaviour
 
             CurrentHighScore = data;
         }
+    }
+
+    public static string FormatBestScore(HighScore score)
+    {
+        return score is null ? "None" : $"{score.name} : {score.score}";
     }
 
     [System.Serializable]

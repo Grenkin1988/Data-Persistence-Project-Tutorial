@@ -15,8 +15,7 @@ public class MainMenuUI : MonoBehaviour
         var score = HighScoreManager.Instance.CurrentHighScore;
         playerName.text = score?.name;
 
-        var scoreText = score is null ? "None" : $"{score.name} : {score.score}";
-        highScore.text = $"Best score: {scoreText}";
+        highScore.text = $"Best score: {HighScoreManager.FormatBestScore(score)}";
     }
 
     public void StartNew()
